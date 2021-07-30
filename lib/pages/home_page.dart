@@ -8,18 +8,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Home page"),
+      appBar: AppBar(
+        title: Text("Home page"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            //Go to Detail page
+            // Model(1,"Get","gg",)
+            AutoRouter.of(context).push(DetailRoute(id: 1));
+          },
+          child: Text("Go to Detail Page"),
         ),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              //Go to Detail page
-              // Model(1,"Get","gg",)
-              AutoRouter.of(context).push(DetailRoute(id: 1));
-            },
-            child: Text("Go to Detail Page"),
-          ),
-        ));
+      ),
+    );
   }
 }

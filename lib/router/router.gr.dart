@@ -35,22 +35,21 @@ class MyAppRouter extends _i1.RootStackRouter {
 
   @override
   List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(HomeRoute.name, path: '/'),
-        _i1.RouteConfig(DetailRoute.name, path: '/detail-page'),
+        _i1.RouteConfig(HomeRoute.name, path: '/home-page'),
+        _i1.RouteConfig(DetailRoute.name, path: '/'),
         _i1.RouteConfig(ThirdRoute.name, path: '/third-page')
       ];
 }
 
 class HomeRoute extends _i1.PageRouteInfo {
-  const HomeRoute() : super(name, path: '/');
+  const HomeRoute() : super(name, path: '/home-page');
 
   static const String name = 'HomeRoute';
 }
 
 class DetailRoute extends _i1.PageRouteInfo<DetailRouteArgs> {
   DetailRoute({required int id, _i2.Key? key})
-      : super(name,
-            path: '/detail-page', args: DetailRouteArgs(id: id, key: key));
+      : super(name, path: '/', args: DetailRouteArgs(id: id, key: key));
 
   static const String name = 'DetailRoute';
 }
