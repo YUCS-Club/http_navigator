@@ -1,16 +1,33 @@
 # route_and_http_demo
 
-A new Flutter project.
+Route and Http Demo Using AutoRoute and Dio,JsonSerializable
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+The command to generate the code we need
+> flutter pub run build_runner watch --delete-conflicting-outputs
 
-A few resources to get you started if this is your first Flutter project:
+### Used Packages
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  auto_route: ^2.2.0
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.0
+  json_serializable: ^4.1.3 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  auto_route_generator: any
+  build_runner: any
+```
+
+For Demo Api, we are currently using [HoldiayApi](https://holidayapi.com/).
+
+
+### For Reference 
+
+- [Flutter Snippets](https://github.com/PhyoLinMg/FlutterTemplate)
