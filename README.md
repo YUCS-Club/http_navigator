@@ -31,3 +31,13 @@ For Demo Api, we are currently using [HoldiayApi](https://holidayapi.com/).
 ### For Reference 
 
 - [Flutter Snippets](https://github.com/PhyoLinMg/FlutterTemplate)
+
+
+အခုလောလောဆယ်တော့ Flutter Web မှာမရသေးပါဘူး 
+XMLHttpRequest လုပ်ပေးရမှာပါ။
+
+ကံမကောင်းတာက Flutter ကလုပ်ပေးရမှာမဟုတ်ပဲ Server Side ကလုပ်ပေးရမှာပါ။
+အဲတော့ Web နဲ့run မယ်ဆိုရင်တော့ Null ပဲတက်နေဦးမှာပါ။
+
+တတ်နိုင်ရင် android ဖုန်းနဲ့ပဲ run စေချင်ပါတယ်။
+

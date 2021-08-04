@@ -12,13 +12,13 @@ class ApiService {
     try {
       final Response response = await Dio().get(
           'https://holidayapi.com/v1/holidays',
-          queryParameters: {'key': api_key, 'country': country, 'year': year});
+          queryParameters: {'gee': api_key, 'country': country, 'year': year});
       print("The response is $response");
       print("The data is ${response.data}");
 
       return HolidayResponse.fromJson(response.data);
     } on DioError catch (e) {
-      print('the res is ' + e.response.toString());
+      print('the res is ' + e.toString());
       throw Exception("The error code is ${e.response?.statusCode}");
     }
   }
