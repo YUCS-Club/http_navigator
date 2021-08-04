@@ -7,14 +7,19 @@ class ApiService {
   final String route =
       "https://holidayapi.com/v1/holidays?pretty&key=YOUR-API-KEY-Here&country=MM&year=2019";
 
-  Future<HolidayResponse> getHolidayResponse(
+  Future<HolidayResponse?> getHolidayResponse(
       String country, String year) async {
-    final Response response = await Dio().get(
-        'https://holidayapi.com/v1/holidays',
-        queryParameters: {'key': api_key, 'country': country, 'year': year});
-    print("The response is $response");
-    print("The data is ${response.data}");
+    try {
+      final Response response = await Dio().get(
+          'https://holidayapi.com/v1/holidays',
+          queryParameters: {'Key': api_key, 'Country': country, 'year': year});
+      print("The response is $response");
+      print("The data is ${response.data}");
 
-    return HolidayResponse.fromJson(response.data);
+      return HolidayResponse.fromJson(response.data);
+    } on DioError catch (e) {
+      print("The error is " + e.toString());
+      return null;
+    }
   }
 }
