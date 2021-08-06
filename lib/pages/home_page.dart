@@ -1,6 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:route_and_http_demo/router/router.gr.dart';
+import 'package:route_and_http_demo/models/holiday_response.dart';
 import 'package:route_and_http_demo/service/api_service.dart';
 
 //ctrl+.
@@ -15,11 +14,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    ApiService().getHolidayResponse("MM", "2020").then((response) {
-      print(response.toString());
-    }).catchError((e) {
-      print(e.toString());
-    });
+    // ApiService().getHolidayResponse("MM", "2020").then((response) {
+    //   print(response.toString());
+    // }).catchError((e) {
+    //   print(e.toString());
+    // });
   }
 
   @override
@@ -29,13 +28,30 @@ class _HomePageState extends State<HomePage> {
         title: Text("Home page"),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            //Go to Detail page
-            // Model(1,"Get","gg",)
-            AutoRouter.of(context).push(DetailRoute(id: 1));
+        child: FutureBuilder<HolidayResponse>(
+          future: ApiService().getHolidayResponse("MM", "2020"),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return const CircularProgressIndicator();
+              default:
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text(snapshot.error.toString()),
+                  );
+                } else {
+                  return ListView.builder(
+                    itemCount: snapshot.data?.holidays.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        title: Text(snapshot.data!.holidays[index].name),
+                        subtitle: Text(snapshot.data!.holidays[index].country),
+                      );
+                    },
+                  );
+                }
+            }
           },
-          child: Text("Go to Detail Page"),
         ),
       ),
     );
