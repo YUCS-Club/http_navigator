@@ -3,8 +3,6 @@ import 'package:route_and_http_demo/models/passenger.dart';
 
 part 'passengers_response.g.dart';
 
-final List<int> get = [1, 2, 3, 4];
-
 @JsonSerializable()
 class PassengersResponse {
   final int totalPassengers;

@@ -14,6 +14,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    ApiService()
+        .getHolidayResponse("MM", "2020")
+        .then((value) => print(value.toString()));
   }
 
   @override
@@ -54,6 +57,7 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
+      // body: Container(),
     );
   }
 }

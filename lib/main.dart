@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:route_and_http_demo/router/router.gr.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   final appRouter = MyAppRouter();

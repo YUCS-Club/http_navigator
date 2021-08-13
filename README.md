@@ -41,3 +41,9 @@ XMLHttpRequest လုပ်ပေးရမှာပါ။
 
 တတ်နိုင်ရင် android ဖုန်းနဲ့ပဲ run စေချင်ပါတယ်။
 
+
+Project Ideas for Students
+
+- Shopping Project
+- Note Taking/Journeling App
+- 
