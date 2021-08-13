@@ -5,11 +5,11 @@ import 'package:route_and_http_demo/pages/export_pages.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(
-      page: HomePage, initial: true,
+      page: HomePage,
       //route name HomeRoute
     ),
     //route name DetailRoute
-    AutoRoute(page: DetailPage),
+    AutoRoute(page: DetailPage, initial: true),
     //route name ThirdRoute
     AutoRoute(page: ThirdPage),
   ],
