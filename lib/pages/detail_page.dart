@@ -26,7 +26,7 @@ class _DetailPageState extends State<DetailPage> {
 
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final response = await ApiService().getPassengers(pageKey = 2);
+      final response = await ApiService().getPassengers(pageKey);
 
       final bool isLastPage = response.totalPages == pageKey;
       if (isLastPage) {
