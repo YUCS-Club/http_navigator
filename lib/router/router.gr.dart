@@ -22,9 +22,8 @@ class MyAppRouter extends _i1.RootStackRouter {
         }),
     DetailRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<DetailRouteArgs>();
-          return _i3.DetailPage(args.id, key: args.key);
+        builder: (_) {
+          return const _i3.DetailPage();
         }),
     ThirdRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -47,19 +46,10 @@ class HomeRoute extends _i1.PageRouteInfo {
   static const String name = 'HomeRoute';
 }
 
-class DetailRoute extends _i1.PageRouteInfo<DetailRouteArgs> {
-  DetailRoute({required int id, _i2.Key? key})
-      : super(name, path: '/', args: DetailRouteArgs(id: id, key: key));
+class DetailRoute extends _i1.PageRouteInfo {
+  const DetailRoute() : super(name, path: '/');
 
   static const String name = 'DetailRoute';
-}
-
-class DetailRouteArgs {
-  const DetailRouteArgs({required this.id, this.key});
-
-  final int id;
-
-  final _i2.Key? key;
 }
 
 class ThirdRoute extends _i1.PageRouteInfo {

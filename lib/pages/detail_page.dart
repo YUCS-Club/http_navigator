@@ -5,8 +5,7 @@ import 'package:route_and_http_demo/models/passenger.dart';
 import 'package:route_and_http_demo/service/api_service.dart';
 
 class DetailPage extends StatefulWidget {
-  final int id;
-  const DetailPage(this.id, {Key? key}) : super(key: key);
+  const DetailPage({Key? key}) : super(key: key);
 
   @override
   _DetailPageState createState() => _DetailPageState();
@@ -19,6 +18,7 @@ class _DetailPageState extends State<DetailPage> {
   @override
   void initState() {
     _pagingController.addPageRequestListener((pageKey) {
+      print("the page key is $pageKey");
       _fetchPage(pageKey);
     });
     super.initState();
@@ -29,6 +29,7 @@ class _DetailPageState extends State<DetailPage> {
       final response = await ApiService().getPassengers(pageKey);
 
       final bool isLastPage = response.totalPages == pageKey;
+      print("is last $isLastPage");
       if (isLastPage) {
         _pagingController.appendLastPage(response.passengers);
       } else {
@@ -44,15 +45,21 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.id.toString()),
+        title: Text("Pagination Example"),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            //go back to home page
-            AutoRouter.of(context).pop();
-          },
-          child: Text("Back to Home Page"),
+        child: PagedListView<int, Passenger>(
+          pagingController: _pagingController,
+          builderDelegate: PagedChildBuilderDelegate<Passenger>(
+            itemBuilder: (context, passenger, index) {
+              return ListTile(
+                title: Text(passenger.name + ":${passenger.trips}"),
+                onTap: () {
+                  print("You tapped $index");
+                },
+              );
+            },
+          ),
         ),
       ),
     );
